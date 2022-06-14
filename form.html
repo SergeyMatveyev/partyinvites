@@ -1,14 +1,12 @@
-<!-- шаблон, который позволит пользователю дать свой ответ на RSVP -->
+{{ define "body" }}
 
-{{ define "body"}}
-	<div class="h5 bg-primari text-white text-center m2 p2">
-		RSVP
-	</div>
-	{{if gt (len.Errors) 0}}
+	<div class="h5 bg-primari text-white text-center m-2 p-2">RSVP</div>
+
+	{{ if gt (len .Errors) 0}}
 		<ul class="text-danger mt-3">
-			{{range.Errors}}
-				<li>{{ . }}</li>
-			{{end}}
+			{{ range.Errors }}
+				<li>{{ .  }}</li>
+			{{ end }}
 		</ul>
 	{{ end }}
 
@@ -26,8 +24,8 @@
 			<input name="phone" class="form-control" value="{{.Phone}}">
 		</div>
 		<div class="form-group my-1">
-			<label>Will yuo attend?</label>
-			<select name="willattend" class="from-select">
+			<label>Will you attend?</label>
+			<select name="willattend" class="form-select">
 				<option value="true" {{if .WillAttend}}selected{{end}}>
 					Yes I'll be there
 				</option>
@@ -40,6 +38,7 @@
 			Submit RSVP
 		</button>
 	</form>
+	
 {{ end }}
 
 
